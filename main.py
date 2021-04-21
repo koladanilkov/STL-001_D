@@ -4,7 +4,7 @@ def connectToWifiAndUpdate():
     print('Memory free', gc.mem_free())
 
     from app.ota_updater import OTAUpdater
-
+    
     sta_if = network.WLAN(network.STA_IF)
     if not sta_if.isconnected():
         print('connecting to network...')
@@ -13,7 +13,7 @@ def connectToWifiAndUpdate():
         while not sta_if.isconnected():
             pass
     print('network config:', sta_if.ifconfig())
-    otaUpdater = OTAUpdater('https://github.com/koladanilkov/STL-006_A', main_dir='app', secrets_file="secrets.py")
+    otaUpdater = OTAUpdater('https://github.com/koladanilkov/STL-001_D', main_dir='app', secrets_file="secrets.py")
     hasUpdated = otaUpdater.install_update_if_available()
     if hasUpdated:
         machine.reset()
